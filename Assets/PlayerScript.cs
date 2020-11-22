@@ -19,13 +19,22 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        lookDirection.Set(horizontal, 0);
-        lookDirection.Normalize();
+        // only change look direction if there is horizontal input
+        if(horizontal != 0)
+        {
+            lookDirection.Set(horizontal, 0);
+            lookDirection.Normalize();
+        }
         Vector2 position = transform.position;
         position.x = position.x + Speed * horizontal * Time.deltaTime;
         transform.position = position;
 
         if (Input.GetButtonDown("Fire1"))
+        {
+            // jump
+        }
+
+        if (Input.GetButtonDown("Fire3"))
         {
             Launch();
         }
